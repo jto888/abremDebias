@@ -1,0 +1,3 @@
+useDynLib(wbtkDebias)
+importFrom(Rcpp, evalCpp)
+exportPattern("^[[:alpha:]]+")
