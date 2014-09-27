@@ -1,4 +1,4 @@
-time.set<-function(x, s=NULL, interval=NULL)  {				
+mleframe<-function(x, s=NULL, interval=NULL)  {				
 				
 				
 ## interval dataframe validation				
