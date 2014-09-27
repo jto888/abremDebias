@@ -1,10 +1,10 @@
-mle.fit<-function(x, dist="weibull")  {				
+mlefit<-function(x, dist="weibull")  {				
 ## check basic parameters of x				
-	if(class(x)!="data.frame") {stop("mle.fit takes a structured dataframe input, use frame.fsiq")}			
-	if(ncol(x)!=3)  {stop("mle.fit takes a structured dataframe input, use frame.fsiq")}			
+	if(class(x)!="data.frame") {stop("mlefit takes a structured dataframe input, use mleframe")}			
+	if(ncol(x)!=3)  {stop("mlefit takes a structured dataframe input, use mleframe")}			
 	xnames<-names(x)			
 	if(xnames[1]!="left" || xnames[2]!="right"||xnames[3]!="qty")  {			
-		 stop("mle.fit takes a structured dataframe input, use frame.fsiq")  }		
+		 stop("mlefit takes a structured dataframe input, use mleframe")  }		
 ## test for any na's and stop, else testint below will be wrong				
 				
 				
@@ -21,7 +21,7 @@ mle.fit<-function(x, dist="weibull")  {
 	intervalsNDX<-which(interval$left>0)			
 	Ni<-length(intervalsNDX)					
 				
-## further validate the input arguments for non-frame.fsiq object				
+## further validate the input arguments for non-fsiq object				
 	if(length(attributes(x)$fsiq)!=1)  {							
 ## stop if Nf+Ns+Ndi != nrow(x)				
 	if( (Nf+Ns+Nd+Ni) != nrow(x))  {			
@@ -85,7 +85,7 @@ mle.fit<-function(x, dist="weibull")  {
 		}
 	}
 							
-	outvec<-.Call("MLEsimplex",fsdi,q,N,vstart,dist_num, package="wbtkDebias")
+	outvec<-.Call("MLEsimplex",fsdi,q,N,vstart,dist_num, package="abremDebias")
 	if(dist_num == 1)  {
 		names(outvec)<-c("Eta","Beta","LL")
 	}

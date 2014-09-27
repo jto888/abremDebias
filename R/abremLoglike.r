@@ -1,11 +1,11 @@
 abremLoglike<-function(x, par, dist="weibull" )  {				
-## check basic parameters of x				
+## check basic format of x				
 				
-	if(class(x)!="data.frame") {stop("mle.fit takes a structured dataframe input, use frame.fsiq")}			
-	if(ncol(x)!=3)  {stop("mle.fit takes a structured dataframe input, use frame.fsiq")}			
+	if(class(x)!="data.frame") {stop("abremLoglike takes a structured dataframe input, use mleframe")}			
+	if(ncol(x)!=3)  {stop("abremLoglike takes a structured dataframe input, use mleframe")}			
 	xnames<-names(x)			
 	if(xnames[1]!="left" || xnames[2]!="right"||xnames[3]!="qty")  {			
-		 stop("mle.fit takes a structured dataframe input, use frame.fsiq")  }		
+		 stop("abremLoglike takes a structured dataframe input, use mleframe")  }		
 ## test for any na's and stop, else testint below will be wrong				
 				
 				
@@ -75,7 +75,7 @@ dist_num=1
 }
 
 								
-	outval<-.Call("MLEloglike",fsdi,q,N,par,dist_num, package="wbtkDebias")
+	outval<-.Call("MLEloglike",fsdi,q,N,par,dist_num, package="abremDebias")
 				
 				
 				
